@@ -1,10 +1,15 @@
+---
+layout: null
+permalink: /cv.html
+---
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="{{ "/images/favicon.svg" | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Curriculum vitae of Yue Su, PhD student at MMLab, The University of Hong Kong. Education, experience, selected publications, projects and invited talks.">
-  <title>Yue Su - Curriculum Vitae</title>
+  <meta name="description" content="{{ site.description | escape }}">
+  <title>{{ site.data.profile.name_en | escape }} · 简历</title>
   <style>
     :root {
       --accent: #3779b9;
@@ -51,6 +56,7 @@
     .name-zh { font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; font-size: 21px; font-weight: 300; color: #4d5159; letter-spacing: .5px; margin-left: 10px; }
     .affiliation { margin: 0 0 8px; font-size: 14px; }
     .contacts { display: flex; flex-wrap: wrap; gap: 5px 14px; font-size: 11.5px; }
+    .cv-entry + .cv-entry { margin-top: 12px; }
     section + section { margin-top: 18px; }
     h2 {
       display: flex; align-items: center; gap: 12px;
@@ -124,7 +130,7 @@
     @media print {
       html, body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .toolbar { display: none; }
-      .page { width: 210mm; height: 297mm; min-height: 0; margin: 0; border: 0; box-shadow: none; break-after: page; page-break-after: always; }
+      .page { width: 210mm; height: auto; min-height: 297mm; margin: 0; border: 0; box-shadow: none; break-after: page; page-break-after: always; }
       .page:last-child { break-after: auto; page-break-after: auto; }
       li, .cv-entry { break-inside: avoid; }
       a { text-decoration: none; }
@@ -132,180 +138,60 @@
   </style>
 </head>
 <body>
-  <nav class="toolbar" aria-label="CV actions">
-    <a href="https://selen-suyue.github.io/">← Homepage</a>
-    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  <nav class="toolbar" aria-label="简历操作">
+    <a href="{{ '/' | relative_url }}">← 返回主页</a>
+    <button type="button" onclick="window.print()">打印 / 保存 PDF</button>
   </nav>
-  <main aria-label="Curriculum vitae">
-    <article class="page page-one" aria-label="CV page 1">
+  <main aria-label="个人简历">
+    <article class="page" aria-label="陈昊璟的简历">
       <header class="identity">
-        <h1>Yue Su <span class="name-zh" lang="zh-CN">苏悦</span></h1>
-        <p class="affiliation">PhD Student · MMLab, The University of Hong Kong</p>
+        <h1>{{ site.data.profile.name_en | escape }} <span class="name-zh">{{ site.data.profile.name_zh | escape }}</span></h1>
+        <p class="affiliation">{{ site.data.profile.headline | escape }}</p>
         <div class="contacts">
-          <a href="mailto:selenyuesu@gmail.com">selenyuesu@gmail.com</a>
-          <a href="https://selen-suyue.github.io/">Homepage</a>
-          <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;user=TUVYCcIAAAAJ">Google Scholar</a>
-          <a href="https://github.com/Selen-Suyue">GitHub</a>
-          <a href="https://www.linkedin.com/in/selen-su-008867334">LinkedIn</a>
+          <a href="mailto:{{ site.author.email | escape }}">{{ site.author.email | escape }}</a>
+          <a href="{{ '/' | relative_url }}">个人主页</a>
+          <a href="https://github.com/{{ site.author.github | escape }}">GitHub</a>
         </div>
       </header>
-
+      <section aria-labelledby="profile-title">
+        <h2 id="profile-title">研究方向</h2>
+        <p>{{ site.data.profile.interests | escape }}</p>
+      </section>
       <section class="education" aria-labelledby="education-title">
-        <h2 id="education-title">Education</h2>
+        <h2 id="education-title">教育经历</h2>
+        {% for entry in site.data.profile.education %}
         <div class="cv-entry">
-          <div class="primary">The University of Hong Kong</div>
-          <div class="date">Sep 2026 - Aug 2030 (expected)</div>
-          <div class="secondary">PhD, MMLab · Department of Electrical and Electronic Engineering</div>
-          <div class="advisor">Advisor: Prof. Xihui Liu</div>
+          <div class="primary">{{ entry.institution | escape }}</div>
+          <div class="date">{{ entry.dates | escape }}</div>
+          <div class="secondary">{{ entry.program | escape }} · {{ entry.status | escape }}</div>
+          <div class="advisor">{{ entry.details | escape }}</div>
         </div>
+        {% endfor %}
+      </section>
+      <section aria-labelledby="internship-title">
+        <h2 id="internship-title">科研实习</h2>
+        {% for entry in site.data.profile.internships %}
         <div class="cv-entry">
-          <div class="primary">Xidian University</div><div class="date">2022 - 2026</div>
-          <div class="secondary">B.Eng., School of Artificial Intelligence</div>
+          <div class="primary">{{ entry.institution | escape }}</div>
+          <div class="date">{{ entry.dates | escape }}</div>
+          <div class="secondary">{{ entry.role | escape }}</div>
+          <div class="advisor">{{ entry.details | escape }}</div>
         </div>
-        <p class="rank">Rank: 4/174 · GPA: 3.7/4.0 · National Scholarship</p>
+        {% endfor %}
       </section>
-
-      <section class="experience" aria-labelledby="experience-title">
-        <h2 id="experience-title">Experience</h2>
-        <ul class="cv-list">
-          <li><div class="cv-entry">
-            <div class="primary">Tencent IEG · LightSpeed Studios</div><div class="date">Sep 2026 - Present</div>
-            <div class="secondary">Talent Program Intern</div>
-          </div></li>
-          <li><div class="cv-entry">
-            <div class="primary">ByteDance Seed · Seed Robotics</div><div class="date">Oct 2025 - May 2026</div>
-            <div class="secondary">Research Intern</div>
-          </div></li>
-          <li><div class="cv-entry">
-            <div class="primary">Astribot Inc. · Research Department</div><div class="date">Jun 2025 - Sep 2025</div>
-            <div class="secondary">Research Intern, with Jianan Wang</div>
-          </div></li>
-          <li><div class="cv-entry">
-            <div class="primary">Shanghai Jiao Tong University · MVIG</div><div class="date">Jul 2024 - Jun 2025</div>
-            <div class="secondary">Research Assistant, with Prof. Cewu Lu and Prof. Lixin Yang</div>
-          </div></li>
-          <li><div class="cv-entry">
-            <div class="primary">Xidian University · Cooperative Intelligent Systems Lab</div><div class="date">Sep 2023 - Jul 2024</div>
-            <div class="secondary">Intern, with Prof. Maoguo Gong and Prof. Hao Li</div>
-          </div></li>
-        </ul>
-      </section>
-
-      <section class="publications-section" aria-labelledby="publications-title">
-        <h2 id="publications-title">Selected Publications</h2>
+      <section aria-labelledby="research-title">
+        <h2 id="research-title">研究经历</h2>
         <ul class="publications">
+          {% for work in site.data.profile.research %}
           <li>
-            <span class="paper-title">World Guidance: World Modeling in Condition Space for Action Generation</span>
-            <span class="authors"><span class="me">Yue Su</span>, Sijin Chen, Haixin Shi, Mingyu Liu, Zhengshen Zhang, Ningyuan Huang, Weiheng Zhong, Zhengbang Zhu, Yuxiao Liu<sup>†</sup>, Xihui Liu<sup>†</sup></span>
-            <span class="abstract">World modeling in condition space for robot action generation.</span>
-            <span class="links"><span class="venue">ICML 2026</span>&nbsp; <a href="https://arxiv.org/abs/2602.22010">arXiv</a> <a href="https://github.com/Selen-Suyue/WoG">Code</a> <a href="https://selen-suyue.github.io/WoGNet/">Project</a></span>
+            <strong class="paper-title">{{ work.title | escape }}</strong>
+            <span class="authors">{{ work.contribution | escape }}</span>
+            <span class="links"><span class="venue">{{ work.venue | escape }} · {{ work.classification | escape }}</span>{% if work.status != empty %}<span class="badge">{{ work.status | escape }}</span>{% endif %}</span>
+            <span class="abstract">{{ work.summary | escape }}</span>
           </li>
-          <li>
-            <span class="paper-title">DSPv2: Improved Dense Policy for Effective and Generalizable Whole-body Mobile Manipulation</span>
-            <span class="authors"><span class="me">Yue Su</span>, Chubin Zhang, Sijin Chen, Liufan Tan, Yansong Tang, Jianan Wang, Xihui Liu<sup>†</sup></span>
-            <span class="abstract">Generalizable whole-body manipulation with improved perception and coherent actions.</span>
-            <span class="links"><span class="venue">ICRA 2026</span>&nbsp; <a href="https://arxiv.org/abs/2509.16063">arXiv</a> <a href="https://github.com/Selen-Suyue/DSPv2">Code</a> <a href="https://selen-suyue.github.io/DSPv2Net/">Project</a></span>
-          </li>
-          <li>
-            <span class="paper-title">Dense Policy: Bidirectional Autoregressive Learning of Actions</span>
-            <span class="authors"><span class="me">Yue Su</span><sup>*</sup>, Xinyu Zhan<sup>*</sup>, Hongjie Fang, Han Xue, Haoshu Fang, Yong-Lu Li, Cewu Lu, Lixin Yang<sup>†</sup></span>
-            <span class="abstract">Bidirectional action generation that expands sparse keyframes into trajectories.</span>
-            <span class="links"><span class="venue">ICCV 2025</span>&nbsp; <a href="https://arxiv.org/abs/2503.13217">arXiv</a> <a href="https://github.com/Selen-Suyue/DensePolicy">Code</a> <a href="https://selen-suyue.github.io/DspNet/">Project</a></span>
-          </li>
-          <li>
-            <span class="paper-title">Motion Before Action: Diffusing Object Motion as Manipulation Condition</span>
-            <span class="authors"><span class="me">Yue Su</span><sup>*</sup>, Xinyu Zhan<sup>*</sup>, Hongjie Fang, Yong-Lu Li, Cewu Lu, Lixin Yang<sup>†</sup></span>
-            <span class="abstract">Object-motion guidance for diffusion-based robot manipulation policies.</span>
-            <span class="links"><span class="venue">RA-L 2025, ICRA 2026</span>&nbsp; <a href="https://arxiv.org/abs/2411.09658">arXiv</a> <a href="https://github.com/Selen-Suyue/MBA">Code</a> <a href="https://selen-suyue.github.io/MBApage/">Project</a></span>
-          </li>
-        </ul>
-        <p class="publication-note"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
-      </section>
-      <footer class="page-footer" aria-label="Page 1 of 2"><span>1 / 2</span></footer>
-    </article>
-
-    <article class="page page-two" aria-label="CV page 2">
-      <section class="publications-section" aria-labelledby="additional-title">
-        <h2 id="additional-title">Selected Publications</h2>
-        <ul class="publications">
-          <li>
-            <span class="paper-title">SG-WAM: Self-Guided World Modeling in Geometry-Aware Policy Space</span>
-            <span class="authors">Ruiteng Zhao, Zhengshen Zhang, <span class="me">Yue Su</span>, Wenshuo Wang, Jiahui Li, Zhiyuan Yang, Francis E. H. Tay, Marcelo H. Ang Jr., Haiyue Zhu<sup>†</sup></span>
-            <span class="links"><span class="venue">arXiv 2026</span> <a href="https://arxiv.org/abs/2608.01397">arXiv</a> <a href="https://github.com/ReturnZhao/SG-WAM">Code</a> <a href="https://sg-wam.github.io/#paper-note">Project</a></span>
-          </li>
-          <li>
-            <span class="paper-title">CARA: Concept-Aware Risk Attention for Interpretable Collision Prediction</span>
-            <span class="authors">Zhishan Tao, Ruoyu Wang, Yucheng Wu, Enjun Du, Yilei Yuan, Sherwin Ho, <span class="me">Yue Su</span>, Jinbo Su, Yi Hong<sup>†</sup></span>
-            <span class="links"><span class="venue">ACM MM 2026 <span class="badge">Oral</span></span> <a href="https://arxiv.org/abs/2607.22494">arXiv</a></span>
-          </li>
-          <li>
-            <span class="paper-title">Towards Generalist Game Players: An Investigation of Foundation Models in the Game Multiverse</span>
-            <span class="authors">Kuan Zhang<sup>*</sup>, Dongchen Liu<sup>*</sup>, Qiyue Zhao<sup>*</sup>, Tianyu Xin<sup>*</sup>, <span class="me">Yue Su</span><sup>*</sup>, Haisheng Wang, Han Yin, Hongbo Ma, Peize Li, …, Yiming Li<sup>†</sup></span>
-            <span class="links"><span class="venue">arXiv 2026</span> <a href="https://arxiv.org/abs/2605.09965">arXiv</a> <a href="https://github.com/THUSI-Lab/Awesome-LFMs-Play-Games">Code</a></span>
-          </li>
-          <li>
-            <span class="paper-title">CLAP: Contrastive Latent Action Pretraining for Learning Vision-Language-Action Models from Human Videos</span>
-            <span class="authors">Chubin Zhang<sup>*</sup>, Jianan Wang<sup>*</sup>, Zifeng Gao, <span class="me">Yue Su</span>, Tiranru Dai, Cai Zhou, Jiwen Lu, Yansong Tang<sup>†</sup></span>
-            <span class="links"><span class="venue">arXiv 2026</span> <a href="https://arxiv.org/abs/2601.04061">arXiv</a> <a href="https://github.com/LinShan-Bin/OpenCLAP">Code</a> <a href="https://lin-shan.com/CLAP/#">Project</a></span>
-          </li>
-          <li>
-            <span class="paper-title">AdvDisplay: Adversarial Display Assembled by Thermoelectric Cooler for Fooling Thermal Infrared Detectors</span>
-            <span class="authors">Hao Li<sup>†</sup>, Fanggao Wan, <span class="me">Yue Su</span>, Yue Wu, Mingyang Zhang, Maoguo Gong<sup>†</sup></span>
-            <span class="links"><span class="venue">AAAI 2025</span> <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34011">Paper</a></span>
-          </li>
-        </ul>
-        <p class="publication-note"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
-      </section>
-
-      <section class="projects-section" aria-labelledby="projects-title">
-        <h2 id="projects-title">Selected Projects</h2>
-        <ul class="projects">
-          <li>
-            <span class="project-title">Aha Looped Transformer</span>
-            <span class="project-description">Interactive atlas of looped Transformers, adaptive depth, and latent reasoning.</span>
-            <span class="project-links"><a href="https://interactive-active-ai.github.io/Aha-Looped-Transformer/">Website</a> <a href="https://github.com/Interactive-Active-AI/Aha-Looped-Transformer">Code</a></span>
-          </li>
-          <li>
-            <span class="project-title">ManiUniCon: A Unified Control Interface for Robotic Manipulation</span>
-            <span class="project-description">Unified robot control with sensor integration and real-time policy execution.</span>
-            <span class="project-links"><a href="https://github.com/Universal-Control">Team</a> <a href="https://github.com/Universal-Control/ManiUniCon">Code</a></span>
-          </li>
-          <li>
-            <span class="project-title">MetaPalace: Let you in a meta world of The Palace Museum</span>
-            <span class="project-description">3D artifact reconstruction and an interactive, RAG-powered museum guide.</span>
-            <span class="project-links"><a href="https://metapalace.xj63.fun/">Website</a> <a href="https://github.com/xj63/MetaPalaceSite">Frontend</a> <a href="https://github.com/Selen-Suyue/MetaPalace">Backend</a></span>
-          </li>
+          {% endfor %}
         </ul>
       </section>
-
-      <section aria-labelledby="talks-title">
-        <h2 id="talks-title">Invited Talks</h2>
-        <ul class="talks">
-          <li><time datetime="2026-03">Mar 2026</time><span><a href="http://xhslink.com/o/74L1xM2Vw2f">RoboTion</a> · World Guidance (WoG)</span></li>
-          <li><time datetime="2025-12">Dec 2025</time><span><a href="https://www.bilibili.com/video/BV1utBrBfED4?spm_id_from=333.788.videopod.episodes&amp;p=9">NICE Seminar</a> · Imitation Learning</span></li>
-          <li><time datetime="2025-12">Dec 2025</time><span><a href="https://b23.tv/We6FLQh">RL China</a> · DSPv2</span></li>
-          <li><time datetime="2025-10">Oct 2025</time><span><a href="https://b23.tv/PvLKNR1" lang="zh-CN">3D视觉工坊</a> · DSP &amp; DSPv2</span></li>
-        </ul>
-      </section>
-
-      <div class="bottom-grid">
-        <section aria-labelledby="awards-title">
-          <h2 id="awards-title">Awards</h2>
-          <ul class="compact-list">
-            <li><span class="award-year">2025</span>Xiaomi Outstanding Scholarship</li>
-            <li><span class="award-year">2025</span>National Scholarship</li>
-            <li><span class="award-year">2025</span>Outstanding Student, Xidian University</li>
-          </ul>
-        </section>
-        <section aria-labelledby="leadership-title">
-          <h2 id="leadership-title">Leadership &amp; Community</h2>
-          <ul class="compact-list">
-            <li>Founder, <a href="https://github.com/Interactive-Active-AI">IAAI</a></li>
-            <li>Head of the Research Department, Microsoft Club, Xidian University</li>
-          </ul>
-        </section>
-      </div>
-      <footer class="page-footer" aria-label="Page 2 of 2"><span>2 / 2</span></footer>
     </article>
   </main>
 </body>

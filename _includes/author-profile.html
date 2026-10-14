@@ -4,31 +4,9 @@
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
 {% endif %}
 
-{% if author.bio == '得大自在' %}
-<style style="display: none !important;">
-  .author__bio.author__bio--calligraphy {
-    font-size: 18.9px;
-    line-height: 1.35;
-  }
-
-  .author__bio--calligraphy svg {
-    display: inline-block;
-    width: 4.3em;
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-  }
-
-  @media screen and (max-width: 767px) {
-    .author__bio.author__bio--calligraphy {
-      font-size: 16.2px;
-    }
-  }
-</style>
-{% endif %}
-
 <div itemscope itemtype="http://schema.org/Person">
 
+  {% if author.avatar %}
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
     	<img src="{{ author.avatar }}" alt="{{ author.name }}">
@@ -37,15 +15,13 @@
     {% endif %}
   </div>
 
+  {% endif %}
+
   <div class="author__content">
     <h3 class="author__name">{{ author.name }}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}
-      {% if author.bio == '得大自在' %}
-        <p class="author__bio author__bio--calligraphy">{% include motto-yunfeng-feiyun.svg %}</p>
-      {% else %}
-        <p class="author__bio">{{ author.bio }}</p>
-      {% endif %}
+      <p class="author__bio">{{ author.bio }}</p>
     {% endif %}
   </div>
 

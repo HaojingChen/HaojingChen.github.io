@@ -1,11 +1,16 @@
+---
+layout: null
+permalink: /slides.html
+---
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="{{ "/images/favicon.svg" | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#fffdfc">
-  <meta name="description" content="Yue Su — personal introduction, experience, and research slides.">
-  <title>Yue Su · Research Slides</title>
+  <meta name="description" content="{{ site.description | escape }}">
+  <title>{{ site.data.profile.name_en | escape }} · Research Slides</title>
   <style>
     :root {
       --paper: #fffdfc;
@@ -36,7 +41,7 @@
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
 
-    .deck { position: relative; width: 100%; height: 100%; isolation: isolate; }
+    .deck { position: relative; width: 100%; height: 100%; isolation: isolate; overflow: hidden; contain: paint; }
     .deck::before {
       content: "";
       position: fixed;
@@ -361,8 +366,8 @@
       line-height: .7;
       pointer-events: none;
     }
-    .name-stage::before { content: "Y"; left: -2%; top: 5%; transform: rotate(-7deg); }
-    .name-stage::after { content: "S"; right: 0; bottom: 3%; color: rgba(216,137,146,.055); transform: rotate(8deg); }
+    .name-stage::before { content: "H"; left: -2%; top: 5%; transform: rotate(-7deg); }
+    .name-stage::after { content: "C"; right: 0; bottom: 3%; color: rgba(216,137,146,.055); transform: rotate(8deg); }
     .name-lockup { position: relative; display: inline-flex; align-items: baseline; gap: .16em; padding: .12em .18em; }
     .name-lockup::before { content: ""; position: absolute; left: -5%; right: -5%; bottom: 7%; height: 1px; background: linear-gradient(90deg, transparent, var(--coral), var(--teal), transparent); transform: scaleX(0); animation: signature-line 1.15s .28s var(--ease) forwards; }
     .name-lockup::after { content: ""; position: absolute; width: 13px; height: 13px; right: -5%; bottom: calc(7% - 6px); border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 10px rgba(131,161,199,.10); animation: float 5s ease-in-out infinite; }
@@ -590,286 +595,99 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
+    .experience-line { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .personal-slide-summary { max-width: 880px; font-size: clamp(16px, 1.8vw, 24px); line-height: 1.8; }
+    .personal-slide-title { font-size: clamp(28px, 3.5vw, 52px); overflow-wrap: anywhere; }
+    .personal-subtitle { color: var(--muted); font-size: clamp(16px, 1.7vw, 23px); line-height: 1.6; }
+    .hero-name { font-size: clamp(42px, 6vw, 88px); line-height: 1.15; }
+    .name-stage { width: 100%; }
+    .name-lockup { display: block; text-align: center; max-width: 100%; }
+    .opening-composition--text { grid-template-columns: 1fr; width: 100%; }
+    .personal-logo { color: var(--teal); font-size: 20px; font-weight: 700; }
+    @media (max-width: 600px) {
+      .experience-line { grid-template-columns: 1fr; gap: 20px; }
+      .experience-line::before { display: none; }
+      .exp-item { padding-left: 0; }
+      .personal-slide-summary { font-size: 16px; }
+      .hero-name { font-size: 42px; }
+    }
   </style>
 </head>
 <body>
   <main class="deck" id="deck">
-    <section class="slide hero active" data-title="Opening" aria-label="Opening slide">
+    <section class="slide hero active" data-title="个人介绍" aria-label="个人介绍">
       <div class="slide-body">
-        <div class="opening-composition">
-          <div class="name-stage" aria-label="Yue Su">
+        <div class="opening-composition{% unless site.author.avatar %} opening-composition--text{% endunless %}">
+          <div class="name-stage">
             <div class="name-lockup reveal" style="--i:0">
-              <h1 class="hero-name">Yue <em>Su</em></h1>
+              <h1 class="hero-name">{{ site.data.profile.name_en | escape }}</h1>
+              <p class="personal-subtitle">{{ site.data.profile.name_zh | escape }} · {{ site.data.profile.headline | escape }}</p>
+              <p class="personal-subtitle">{{ site.data.profile.interests | escape }}</p>
             </div>
           </div>
+          {% if site.author.avatar %}
           <div class="hero-orbit reveal" style="--i:1" aria-hidden="true">
             <span class="orbit-line"></span>
             <span class="orbit-dot one"></span>
             <span class="orbit-dot two"></span>
-            <img class="portrait" src="images/selen.png" alt="">
+            <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="">
           </div>
+          {% endif %}
         </div>
       </div>
     </section>
-
-    <section class="slide" data-title="Experience" aria-label="Experience timeline">
+    <section class="slide" data-title="教育与实习" aria-label="教育与实习">
       <header>
-        <div class="eyebrow reveal" style="--i:0">Experience</div>
-        <h2 class="slide-title medium reveal" style="--i:1">A continuous path through<br><span class="accent">research and robotics.</span></h2>
+        <div class="eyebrow reveal" style="--i:0">Education & Research Internship</div>
+        <h2 class="slide-title medium reveal" style="--i:1">教育与科研实习</h2>
       </header>
       <div class="slide-body">
-        <div class="experience-line experience-flow reveal" style="--i:2">
+        <div class="experience-line reveal" style="--i:2">
+          {% for entry in site.data.profile.education %}
           <article class="exp-item">
-            <div class="exp-logo"><img src="images/XDU.png" alt="Xidian University"></div>
-            <time>2022 — 2026</time><h3>Xidian University</h3><p>B.Eng. · OMEGA Lab<br><b>Rank 4 / 174</b> · National Scholarship</p>
+            <div class="exp-logo personal-logo">{{ entry.status | escape }}</div>
+            <time>{{ entry.dates | escape }}</time>
+            <h3>{{ entry.institution | escape }}</h3>
+            <p>{{ entry.program | escape }}<br>{{ entry.details | escape }}</p>
           </article>
+          {% endfor %}
+          {% for entry in site.data.profile.internships %}
           <article class="exp-item">
-            <div class="exp-logo"><img src="images/SJTU.png" alt="Shanghai Jiao Tong University"></div>
-            <time>2024 — 2025</time><h3>MVIG · SJTU</h3><p>Research Assistant<br>Robot learning</p>
+            <div class="exp-logo personal-logo">实习</div>
+            <time>{{ entry.dates | escape }}</time>
+            <h3>{{ entry.institution | escape }}</h3>
+            <p>{{ entry.role | escape }}<br>{{ entry.details | escape }}</p>
           </article>
-          <article class="exp-item">
-            <div class="exp-logo"><img src="images/astri.png" alt="Astribot"></div>
-            <time>2025</time><h3>Astribot</h3><p>Research Intern<br>Whole-body manipulation</p>
-          </article>
-          <article class="exp-item">
-            <div class="exp-logo"><img src="images/bytedance.png" alt="ByteDance Seed"></div>
-            <time>2025 — 2026</time><h3>ByteDance Seed</h3><p>Research Intern<br>Seed Robotics</p>
-          </article>
-          <article class="exp-item">
-            <div class="exp-logo"><img src="images/HKU.png" alt="The University of Hong Kong"></div>
-            <time>2026 —</time><h3>MMLab · HKU</h3><p>PhD<br>World models & action</p>
-          </article>
+          {% endfor %}
         </div>
       </div>
-      <div class="slide-foot"><span>Experience</span><span>02</span></div>
     </section>
-
-    <section class="slide" data-title="Research arc" aria-label="Research progression">
+    {% for work in site.data.profile.research %}
+    <section class="slide" data-title="{{ work.short_title | escape }}" aria-label="{{ work.short_title | escape }}">
       <header>
-        <div class="eyebrow reveal" style="--i:0">Selected works</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Four projects, one research thread.</h2>
+        <div class="eyebrow reveal" style="--i:0">{{ work.venue | escape }} · {{ work.classification | escape }}{% if work.status != empty %} · {{ work.status | escape }}{% endif %}</div>
+        <h2 class="slide-title personal-slide-title reveal" style="--i:1">{{ work.title | escape }}</h2>
       </header>
       <div class="slide-body">
-        <div class="work-cards reveal" style="--i:2">
-          <article class="work-card"><a href="https://selen-suyue.github.io/MBApage/"><div class="work-card__head"><span class="work-card__num">01</span><span>MBA</span></div><div class="work-card__media"><img src="images/mba_animation.gif" alt="Motion Before Action teaser"></div><h3>Motion Before Action</h3><p>Object motion becomes the manipulation condition.</p></a></article>
-          <article class="work-card"><a href="https://selen-suyue.github.io/DspNet/"><div class="work-card__head"><span class="work-card__num">02</span><span>Dense Policy</span></div><div class="work-card__media"><img src="https://selen-suyue.github.io/DspNet/img/teaser.png" alt="Dense Policy teaser"></div><h3>Dense Policy</h3><p>Bidirectional autoregressive learning of actions.</p></a></article>
-          <article class="work-card"><a href="https://selen-suyue.github.io/DSPv2Net/"><div class="work-card__head"><span class="work-card__num">03</span><span>DSPv2</span></div><div class="work-card__media"><img src="https://selen-suyue.github.io/DSPv2Net/img/teaser.png" alt="DSPv2 teaser"></div><h3>Whole-body policy</h3><p>Effective perception, generalization, and coherent action.</p></a></article>
-          <article class="work-card"><a href="https://selen-suyue.github.io/WoGNet/"><div class="work-card__head"><span class="work-card__num">04</span><span>World Guidance</span></div><div class="work-card__media"><img src="https://selen-suyue.github.io/WoGNet/img/teaser.png" alt="World Guidance teaser"></div><h3>World Guidance</h3><p>World modeling in condition space for action generation.</p></a></article>
+        <div class="profile-panel reveal" style="--i:2">
+          <p class="personal-subtitle">{{ work.contribution | escape }} · {{ work.short_title | escape }}</p>
+          <p class="personal-slide-summary">{{ work.summary | escape }}</p>
         </div>
       </div>
-      <div class="slide-foot"><span>Condition-guided action generation</span><span>03</span></div>
+      <div class="slide-foot"><span>{{ site.data.profile.name_en | escape }}</span><a href="{{ '/#works' | relative_url }}">研究主页 ↗</a></div>
     </section>
-
-    <section class="slide" data-title="MBA intuition" aria-label="Motion Before Action intuition">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">MBA · 01 / 02</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Motion before action.</h2>
-        <p class="slide-lede reveal" style="--i:2">First imagine the object trajectory—then let it guide the robot trajectory.</p>
-      </header>
-      <div class="slide-body">
-        <div class="trajectory-grid reveal" style="--i:3">
-          <figure class="trajectory"><video muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/MBApage/video/video_render/fast_cut_load_0.mp4" type="video/mp4"></video><figcaption>Cut clay</figcaption></figure>
-          <figure class="trajectory"><video muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/MBApage/video/video_render/fast_open_drawer_load_0.mp4" type="video/mp4"></video><figcaption>Open drawer</figcaption></figure>
-          <figure class="trajectory"><video muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/MBApage/video/video_render/fast_place_load_0.mp4" type="video/mp4"></video><figcaption>Put bread into pot</figcaption></figure>
-          <figure class="trajectory"><video muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/MBApage/video/video_render/fast_pour_2_load_0.mp4" type="video/mp4"></video><figcaption>Pour balls</figcaption></figure>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://selen-suyue.github.io/MBApage/">MBA project ↗</a><span>04</span></div>
-    </section>
-
-    <section class="slide" data-title="MBA method" aria-label="Motion Before Action method">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">MBA · 02 / 02</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Two diffusion processes, one manipulation condition.</h2>
-      </header>
-      <div class="slide-body">
-        <div class="method-grid">
-          <a class="media-frame reveal" style="--i:2" href="https://selen-suyue.github.io/MBApage/img/pipeline.png" target="_blank" rel="noopener"><img src="https://selen-suyue.github.io/MBApage/img/pipeline.png" alt="Motion Before Action pipeline"></a>
-          <div class="method-notes reveal" style="--i:3">
-            <div class="method-note"><b>Step 1</b><h3>Motion diffusion</h3><p>Predict object motion from the current observation and language instruction.</p></div>
-            <div class="method-note"><b>Step 2</b><h3>Action diffusion</h3><p>Condition the manipulation policy on the generated motion representation.</p></div>
-            <div class="method-note"><b>Property</b><h3>Plug and play</h3><p>Attach MBA to existing manipulation policies without redesigning the action backbone.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://arxiv.org/abs/2411.09658">RA-L 2025 · ICRA 2026 ↗</a><span>05</span></div>
-    </section>
-
-    <section class="slide" data-title="Dense Policy intuition" aria-label="Dense Policy intuition">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">Dense Policy · 01 / 02</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Action generation is a <span class="accent">design choice.</span></h2>
-      </header>
-      <div class="slide-body">
-        <div class="comparison-layout">
-          <a class="media-frame reveal" style="--i:2" href="https://selen-suyue.github.io/DspNet/img/relat.png" target="_blank" rel="noopener"><img src="https://selen-suyue.github.io/DspNet/img/relat.png" alt="Comparison of holistic, next-token, next-chunk, and Dense Policy action generation"></a>
-          <div class="comparison-note reveal" style="--i:3"><h3>Sparse first.<br>Dense later.</h3><p>Dense Policy predicts a few structural keyframes, then expands them bidirectionally in logarithmic inference steps.</p></div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://selen-suyue.github.io/DspNet/">Dense Policy project ↗</a><span>06</span></div>
-    </section>
-
-    <section class="slide" data-title="Dense Policy method" aria-label="Dense Policy method">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">Dense Policy · 02 / 02</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Expand from sparse keyframes—<span class="accent">in both directions.</span></h2>
-      </header>
-      <div class="slide-body">
-        <div class="project-pair">
-          <article class="project-deepdive reveal" style="--i:2"><div class="project-deepdive__media"><img src="https://selen-suyue.github.io/DspNet/img/pipeline.png" alt="Dense Policy pipeline"></div><div class="project-deepdive__copy"><small>Bidirectional generation</small><h3>Sparse → dense.</h3><p>Predict key actions first, then recursively fill the intervals to form a coherent trajectory.</p><a href="https://arxiv.org/abs/2503.13217">ICCV 2025 paper ↗</a></div></article>
-          <article class="project-deepdive reveal" style="--i:3"><div class="project-deepdive__media"><video muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/DspNet/video/flower_dsp.mp4" type="video/mp4"></video></div><div class="project-deepdive__copy"><small>Real-robot behavior</small><h3>Coherent manipulation.</h3><p>The policy preserves global task structure while refining detailed local actions.</p><a href="https://selen-suyue.github.io/DspNet/">See all demos ↗</a></div></article>
-        </div>
-      </div>
-      <div class="slide-foot"><span>Bidirectional autoregressive learning of actions</span><span>07</span></div>
-    </section>
-
-    <section class="slide" data-title="DSPv2 motivation" aria-label="DSPv2 motivation">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">DSPv2 · 01 / 02</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Whole-body mobile manipulation changes the problem.</h2>
-      </header>
-      <div class="slide-body">
-        <div class="method-grid">
-          <a class="media-frame reveal" style="--i:2" href="https://selen-suyue.github.io/DSPv2Net/img/teaser.png" target="_blank" rel="noopener"><img src="https://selen-suyue.github.io/DSPv2Net/img/teaser.png" alt="DSPv2 overview"></a>
-          <div class="method-notes reveal" style="--i:3">
-            <div class="method-note"><b>Perception</b><h3>See what matters</h3><p>Mobile settings introduce larger visual variation and longer interaction horizons.</p></div>
-            <div class="method-note"><b>Coordination</b><h3>Move as one system</h3><p>Base, torso, and arm actions must form a coherent whole-body trajectory.</p></div>
-            <div class="method-note"><b>Generalization</b><h3>Leave the training setup</h3><p>A useful policy must transfer across objects, tasks, and environments.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://selen-suyue.github.io/DSPv2Net/">DSPv2 project ↗</a><span>08</span></div>
-    </section>
-
-    <section class="slide" data-title="DSPv2 system" aria-label="DSPv2 pipeline and demonstration">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">DSPv2 · 02 / 02</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Perceive globally. Act coherently.</h2>
-      </header>
-      <div class="slide-body">
-        <div class="dspv2-focus">
-          <a class="dspv2-pipeline reveal" style="--i:2" href="https://selen-suyue.github.io/DSPv2Net/img/pipeline.png" target="_blank" rel="noopener"><img src="https://selen-suyue.github.io/DSPv2Net/img/pipeline.png" alt="DSPv2 perception and action pipeline"></a>
-          <div class="dspv2-video reveal" style="--i:3"><video muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/images/dspv2.mp4" type="video/mp4"></video></div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://arxiv.org/abs/2509.16063">ICRA 2026 paper ↗</a><span>09</span></div>
-    </section>
-
-    <section class="slide" data-title="WoG motivation" aria-label="World Guidance motivation">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">World Guidance · Motivation</div>
-      </header>
-      <div class="slide-body">
-        <div class="manifesto">
-          <div class="manifesto-copy">
-            <blockquote class="reveal" style="--i:1">Learn what to predict <span class="accent">for action</span>—not what humans predefine.</blockquote>
-            <p class="reveal" style="--i:2">Raw future pixels are rich but redundant. Hand-designed targets are compact but limiting. WoG learns the bottleneck: a condition space that retains precisely what action needs.</p>
-          </div>
-          <div class="motivation-visual reveal" style="--i:3" aria-label="Comparison between manual visual targets and learned action-useful guidance">
-            <div class="motivation-panel manual"><b>Manual targets</b><strong>Video<br>Depth<br>Semantics</strong><span>Hand-crafted objectives are detailed, but limited and difficult to generalize.</span></div>
-            <div class="motivation-funnel" aria-hidden="true"></div>
-            <div class="motivation-panel learned"><b>World Guidance</b><strong>Action-useful<br>condition</strong><span>Compact, learned from data, and intrinsically aligned with action.</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://arxiv.org/abs/2602.22010">ICML 2026 · Paper ↗</a><span>10</span></div>
-    </section>
-
-    <section class="slide" data-title="WoG overview" aria-label="World Guidance overview">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">World Guidance · One view</div>
-        <h2 class="slide-title medium reveal" style="--i:1">World modeling inside the <span class="accent">condition space.</span></h2>
-      </header>
-      <div class="slide-body">
-        <div class="method-grid">
-          <a class="media-frame reveal" style="--i:2" href="https://selen-suyue.github.io/WoGNet/img/teaser.png" target="_blank" rel="noopener">
-            <img src="https://selen-suyue.github.io/WoGNet/img/teaser.png" alt="World Guidance method overview">
-          </a>
-          <div class="method-notes reveal" style="--i:3">
-            <div class="method-note"><b>Compact</b><h3>Less is more</h3><p>Compress future observations into a non-redundant predictive space.</p></div>
-            <div class="method-note"><b>Predictable</b><h3>Action-centric latent</h3><p>The VLA predicts conditions that are intrinsically relevant to action.</p></div>
-            <div class="method-note"><b>Fine-grained</b><h3>Guidance that acts</h3><p>Future-aware conditions support precise and generalizable manipulation.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://selen-suyue.github.io/WoGNet/">World Guidance project ↗</a><span>11</span></div>
-    </section>
-
-    <section class="slide" data-title="WoG method" aria-label="World Guidance method">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">World Guidance · Method</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Condition in. Condition out.<br><span class="accent">Complete inference.</span></h2>
-      </header>
-      <div class="slide-body">
-        <div class="method-grid">
-          <a class="media-frame reveal" style="--i:2" href="https://selen-suyue.github.io/WoGNet/img/pipe.png" target="_blank" rel="noopener">
-            <img src="https://selen-suyue.github.io/WoGNet/img/pipe.png" alt="World Guidance two-stage inference pipeline">
-          </a>
-          <div class="method-notes reveal" style="--i:3">
-            <div class="method-note"><b>Stage I</b><h3>Condition in</h3><p>Inject future observations into the action inference pipeline.</p></div>
-            <div class="method-note"><b>Stage II</b><h3>Condition out</h3><p>Predict compressed future conditions alongside actions.</p></div>
-            <div class="method-note"><b>Transfer</b><h3>Guidance retained</h3><p>Carry future knowledge into the VLA without requiring future frames at test time.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://selen-suyue.github.io/WoGNet/">Interactive project page ↗</a><span>12</span></div>
-    </section>
-
-    <section class="slide" data-title="WoG demos" aria-label="World Guidance demonstrations">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">World Guidance · Real-world behavior</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Fine-grained action generation.<span class="speed-badge">4× speed</span></h2>
-      </header>
-      <div class="slide-body">
-        <div class="wog-video-grid reveal" style="--i:2">
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/pp_1.mp4" type="video/mp4"></video><figcaption>“put the green cup into the plate”</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/novel_obj_1.mp4" type="video/mp4"></video><figcaption>“put the red cup into the plate” (unseen)</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/novel_obj_2.mp4" type="video/mp4"></video><figcaption>“fold the brown towel” (unseen)</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/fold_1.mp4" type="video/mp4"></video><figcaption>“fold the blue towel”</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/fold_2.mp4" type="video/mp4"></video><figcaption>“fold the white towel”</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/close.mp4" type="video/mp4"></video><figcaption>“close the microwave”</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/light.mp4" type="video/mp4"></video><figcaption>“fold the blue towel” (light change)</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/pp_2.mp4" type="video/mp4"></video><figcaption>“put the green cup into the plate”</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/background_1.mp4" type="video/mp4"></video><figcaption>“put the green cup into the plate” (background change)</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/background_2.mp4" type="video/mp4"></video><figcaption>“fold the white towel” (background change)</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/pp_3.mp4" type="video/mp4"></video><figcaption>“put the green cup into the plate”</figcaption></figure>
-          <figure class="wog-demo"><video data-rate="4" muted loop playsinline preload="metadata"><source src="https://selen-suyue.github.io/WoGNet/video/fold_3.mp4" type="video/mp4"></video><figcaption>“fold the white towel”</figcaption></figure>
-        </div>
-      </div>
-      <div class="slide-foot"><a href="https://selen-suyue.github.io/WoGNet/">All videos and prompts ↗</a><span>13</span></div>
-    </section>
-
-    <section class="slide" data-title="Scale" aria-label="World Guidance scale">
-      <header>
-        <div class="eyebrow reveal" style="--i:0">World Guidance · Human videos</div>
-        <h2 class="slide-title medium reveal" style="--i:1">Any video can provide a condition.</h2>
-      </header>
-      <div class="slide-body">
-        <div class="human-video-layout">
-          <a class="human-strip reveal" style="--i:2" href="https://selen-suyue.github.io/WoGNet/img/pico.png" target="_blank" rel="noopener"><img src="https://selen-suyue.github.io/WoGNet/img/pico.png" alt="Human manipulation trajectories used by World Guidance"></a>
-          <div class="human-ring-wrap reveal" style="--i:3" aria-label="1920 hours of human manipulation video, including 220 hours annotated with actions">
-            <div class="human-ring">
-              <div class="human-ring-copy"><strong>1920h</strong><span>human manipulation<br>video</span></div>
-            </div>
-            <div class="human-ring-note"><strong>220h</strong><span>11.5% annotated<br>with actions</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-foot"><span>Learning from human manipulation videos</span><span>14</span></div>
-    </section>
-
-    <section class="slide closing" data-title="Closing" aria-label="Closing slide">
+    {% endfor %}
+    <section class="slide closing" data-title="联系" aria-label="联系">
       <div class="slide-body">
         <div class="closing-wrap">
           <h1 class="reveal" style="--i:0">Thank you.</h1>
-          <div class="closing-summary reveal" style="--i:1"><span>MBA</span><span>Dense Policy</span><span>DSPv2</span><span>World Guidance</span></div>
-          <div class="closing-name reveal" style="--i:2">Yue Su</div>
+          <div class="closing-name reveal" style="--i:1">{{ site.data.profile.name_en | escape }} · {{ site.data.profile.name_zh | escape }}</div>
+          <p class="personal-subtitle reveal" style="--i:2"><a href="mailto:{{ site.author.email | escape }}">{{ site.author.email | escape }}</a> · <a href="{{ '/' | relative_url }}">个人主页</a></p>
         </div>
       </div>
     </section>
-
     <div class="deck-ui" aria-hidden="false">
-      <div class="slide-count" aria-live="polite"><span id="currentCount">01</span> / <span id="totalCount">15</span></div>
+      <div class="slide-count" aria-live="polite"><span id="currentCount">01</span> / <span id="totalCount">08</span></div>
       <div class="nav-dots" id="navDots" aria-label="Slide navigation"></div>
       <div class="controls">
         <button class="control" id="prev" type="button" aria-label="Previous slide">←</button>

@@ -1,15 +1,15 @@
 {
-  "name": "Selen Su / Homepage",
-  "short_name": "Selen Su",
+  "name": "陈昊璟 / Haojing Chen",
+  "short_name": "陈昊璟",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/images/favicon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }

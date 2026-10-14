@@ -1,26 +1,11 @@
-# main links links
-
 main:
-  - title: "Works"
+  - title: "研究"
     url: /#works
-
-  - title: "CV"
+  - title: "教育"
+    url: /#education
+  - title: "实习"
+    url: /#internships
+  - title: "简历"
     url: /cv.html
-
   - title: "Slides"
     url: /slides.html
-
-  # - title: "CV-En"
-  #   url: /files/selen_resume.pdf
-    
-  # - title: "CV-Cn"
-  #   url:   /files/chinese_resume.pdf  
-
-  - title: "Blogs"
-    url: "https://selen-suyue.github.io/biosite/"  
-    
-  # - title: "Slide"
-  #   url: /files/selenslide.pdf
-
-  - title: "Demos"
-    url: https://www.youtube.com/@SelenSu-j6h
