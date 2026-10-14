@@ -1,0 +1,122 @@
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.page__footer {
+  @include clearfix;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  clear: both;
+  /* sticky footer fix start */
+  position: absolute;
+  bottom: 0em;
+  height: auto;
+  /* sticky footer fix end */
+  margin-top: 1em;
+  color: mix(#fff, $gray, 25%);
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+  background-color: 	#FFFFFF;
+  border-top: 1px solid $light-gray;
+
+  footer {
+    @include clearfix;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5em;
+    max-width: 100%;
+    padding: 0 1em 0.55em;
+
+    @include breakpoint($x-large) {
+      max-width: $x-large;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .fas,
+  .fab,
+  .far,
+  .fal {
+    color: mix(#fff, $gray, 25%);
+  }
+}
+
+.page__footer-copyright {
+  font-family: $global-font-family;
+  font-size: $type-size-7;
+  line-height: 1.6;
+}
+
+.page__footer-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-left: 0.45em;
+  vertical-align: -0.08em;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35em;
+    height: 1.35em;
+    text-decoration: none;
+  }
+}
+
+.page__footer-follow {
+  margin-bottom: 0.35em;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45em;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    font-family: $sans-serif-narrow;
+    font-size: $type-size-6;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  li + li:before {
+    content: none;
+  }
+
+  a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.45em;
+    height: 1.45em;
+    padding-right: 0;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .social-icons {
+    a {
+      white-space: nowrap;
+    }
+  }
+}
