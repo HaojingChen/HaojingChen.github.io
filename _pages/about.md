@@ -1,49 +1,733 @@
 ---
 permalink: /
 author_profile: true
-redirect_from:
+redirect_from: 
   - /about/
   - /about.html
 ---
 {% include about-homepage-header.html %}
 
-<p>{{ site.data.profile.introduction | escape }}</p>
+I am a PhD student at <a class="inline-affiliation" href="https://mmlab.hk/"><img src="images/mmlab-hku.png" alt="" width="16" height="16">MMLab@HKU</a> (2026.9 - 2030.8), advised by [Prof. Xihui Liu](https://xh-liu.github.io/). I founded <a class="inline-affiliation inline-affiliation--iaai" href="https://github.com/Interactive-Active-AI"><span class="inline-affiliation__iaai-icon" aria-hidden="true"><img src="images/iaai-rose-profile.png" alt="" width="20" height="20"></span>IAAI</a>, and currently intern at [Tencent LightSpeed](https://www.lightspeed-studios.com/).
 
-<h2 id="education">教育经历</h2>
+I received my B.Eng. from [Xidian University](https://en.xidian.edu.cn/) (2022.9 - 2026.6). During my studies, I interned at [ByteDance Seed](https://seed.bytedance.com/en/) and was an RA at [MVIG@SJTU](https://www.mvig.org/index.html) with [Prof. Lixin Yang](https://lixiny.github.io/) and [Prof. Cewu Lu](https://www.mvig.org/index.html).
+
+News
+---------------
+<section class="profile-list-section profile-list-section--news" aria-label="Latest news">
+  <ul class="profile-list">
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2026-05">May 2026</time>
+      <span class="profile-list__content">
+        <span class="profile-list__title">Internship completed</span>
+        <span class="profile-list__meta">ByteDance Seed · Seed Robotics</span>
+      </span>
+    </li>
+  </ul>
+</section>
+
+Experience
+--------------
+
 <div class="experience-container">
-{% for entry in site.data.profile.education %}
   <div class="experience-card">
-    <div class="experience-info">
-      <strong>{{ entry.institution | escape }}</strong>
-      <span class="experience-date">{{ entry.dates | escape }} · {{ entry.status | escape }}</span>
-      {{ entry.program | escape }}<br>
-      {{ entry.details | escape }}
-    </div>
+      <img src="images/HKU.png" alt="HKU logo" class="experience-logo">
+      <div class="experience-info">
+          <strong>The University of Hong Kong</strong>
+          <span class="experience-date">Sep 2026 - </span>
+          Phd at <a href="https://mmlab.hk/">MMLab@HKU</a>
+      </div>
   </div>
-{% endfor %}
+
+  <div class="experience-card">
+      <img src="images/tencent-vertical.png" alt="Tencent logo" class="experience-logo experience-logo--tencent">
+      <div class="experience-info">
+          <strong>Tencent IEG</strong>
+          <span class="experience-date">Sep 2026 - </span>
+          Talent Prog. Intern at <a href="https://www.lightspeed-studios.com/">LightSpeed</a>
+      </div>
+  </div>
+
+  <div class="experience-card">
+      <img src="images/bytedance.png" alt="Seed logo" class="experience-logo">
+      <div class="experience-info">
+          <strong>ByteDance Seed</strong>
+          <span class="experience-date">Oct 2025 - May 2026</span>
+          Research Intern at <a href="https://seed.bytedance.com/en/">Seed-Robotics</a>
+      </div>
+  </div>
+
+  <div class="experience-card">
+      <img src="images/astri.png" alt="astri logo" class="experience-logo">
+      <div class="experience-info">
+          <strong>Astribot Inc.</strong>
+          <span class="experience-date">June 2025 - Sep 2025</span>
+          Research Intern with <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en">Jianan Wang</a>
+      </div>
+  </div>
+
+  <div class="experience-card">
+      <img src="images/SJTU.png" alt="SJTU logo" class="experience-logo">
+      <div class="experience-info">
+          <strong>Shanghai Jiao Tong University</strong>
+          <span class="experience-date">July 2024 - June 2025</span>
+          Research Assistant at <a href="https://www.mvig.org/index.html">MVIG</a> Lab
+      </div>
+  </div>
+
+  <div class="experience-card">
+      <img src="images/XDU.png" alt="Xi'dian logo" class="experience-logo">
+      <div class="experience-info">
+          <strong>Xidian University</strong>
+          <span class="experience-date">Sep 2022 - July 2026</span>
+          Rank 4/174, <b>National Scholarship</b><br>
+          B.E at <a href="https://sai.xidian.edu.cn">SAI</a> & RA at <a href="https://web.xidian.edu.cn/mggong/">OMEGA</a> Lab
+      </div>
+  </div>
+
+  <div class="experience-card">
+      <img src="images/ssy.png" alt="ssy logo" class="experience-logo">
+      <div class="experience-info">
+          <strong>湖北省武昌实验中学</strong>
+          <span class="experience-date">Sep 2019 - June 2022</span>
+          那是一段小有遗憾的幸福时光.
+      </div>
+  </div>
 </div>
 
-<h2 id="internships">科研实习</h2>
-<div class="experience-container">
-{% for entry in site.data.profile.internships %}
-  <div class="experience-card">
-    <div class="experience-info">
-      <strong>{{ entry.institution | escape }}</strong>
-      <span class="experience-date">{{ entry.dates | escape }}</span>
-      {{ entry.role | escape }}<br>
-      {{ entry.details | escape }}
-    </div>
-  </div>
-{% endfor %}
+<h2 id="works">Works</h2>
+<div class="pub-button-container">
+  <button class="pub-button pub-button--all active" type="button" data-filter="all" aria-pressed="true">All</button>
+  <button class="pub-button pub-button--understanding" type="button" data-filter="understanding" aria-pressed="false">Understanding</button>
+  <button class="pub-button pub-button--generation" type="button" data-filter="generation" aria-pressed="false">Generation</button>
+  <button class="pub-button pub-button--action" type="button" data-filter="action" aria-pressed="false">Action</button>
+  <span class="pub-legend-group" role="group" aria-label="Work distinction filters">
+    <button class="pub-legend" type="button" data-filter="first" aria-pressed="false" title="Show first- or core-contributor works">
+      <span class="pub-legend__swatch" aria-hidden="true"></span>
+      First / Core
+    </button>
+    <button class="pub-legend" type="button" data-filter="selected" aria-pressed="false" title="Show selected works">
+      <span class="pub-legend__swatch pub-legend__swatch--selected" aria-hidden="true"></span>
+      Selected
+    </button>
+  </span>
 </div>
 
-<h2 id="works">研究经历</h2>
-<p>{{ site.data.profile.interests | escape }}</p>
 <div id="works-list">
-  {% include profile-research.html %}
+<div class="publication-card pinned featured first-author" data-topics="generation action" data-date="2026-02-25">
+  <div class="pub-category-dots" aria-label="Categories: Generation, Action">
+    <span class="pub-category-dot pub-category-dot--generation" aria-hidden="true"></span>
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <div class="pub-media-rotator" data-interval="4000" style="position: relative; width: 200px; height: 120px; margin-right: 20px; border-radius: 8px; overflow: hidden; flex: 0 0 auto;">
+      <img src="images/WoG.png" alt="wog" style="width: 200px; height: 120px; object-fit: cover; display: block;">
+      <video style="width: 200px; height: 120px; object-fit: cover; display: none;" autoplay muted playsinline>
+        <source src="images/WoG.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+        <strong>World Guidance: World Modeling in Condition Space for Action Generation</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>, 
+            <a href="https://ch3cook-fdu.github.io/" target="_blank">Sijin Chen</a>,
+            <a href="https://scholar.google.com/citations?user=sACkOGEAAAAJ&hl=en" target="_blank">Haixin Shi</a>, 
+            <a href="https://mingyulau.github.io/" target="_blank">Mingyu Liu</a>,
+            <a href="https://scholar.google.com/citations?user=8nrJ1vsAAAAJ&hl=en" target="_blank">Zhengshen Zhang</a>,
+            <a href="" target="_blank">Ningyuan Huang</a>,
+            <a href="https://scholar.google.com/citations?user=3EXYkZcAAAAJ&hl=zh-CN" target="_blank">Weiheng Zhong</a>,
+            <a href="https://zbzhu99.github.io/" target="_blank">Zhengbang Zhu</a>,
+            <a href="https://scholar.google.com/citations?user=i8wNtSgAAAAJ&hl=en" target="_blank">Yuxiao Liu</a>&dagger;,
+            <a href="https://xh-liu.github.io/" target="_blank">Xihui Liu</a>&dagger;
+        </i><br>
+        We propose WoG (World Guidance), a world modeling paradigm  in condition space for action generation: less is more.
+        <div class="pub-meta-row">
+          <span class="pub-venue">ICML 2026</span>
+          <span class="pub-links">
+            <a href="https://arxiv.org/abs/2602.22010"><em>[arXiv]</em></a>
+            <a href="https://github.com/Selen-Suyue/WoG"><em>[code]</em></a>
+            <a href="https://selen-suyue.github.io/WoGNet/"><em>[website]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
 </div>
 
-<script src="{{ '/assets/js/experience_layout.js' | relative_url }}" defer></script>
-<style>
-  .experience-info { overflow-wrap: anywhere; }
-</style>
+<div class="publication-card" data-topics="action" data-date="2026-10">
+  <div class="pub-category-dots" aria-label="Category: Action">
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+  <div class="publication-card__layout">
+    <img src="https://gamescaling.github.io/assets/img/teaser.jpg" alt="GameScaling: embodied agents across diverse virtual worlds" width="200" height="120" style="margin-right: 20px; object-fit: contain; flex-shrink: 0;">
+    <div>
+        <strong>Scaling in Games: Continued Pre-Training for Embodied Agents in Diverse Virtual Worlds</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://itheresaapocalypse.github.io/" target="_blank">Kuan Zhang</a>*,
+            Yukun Chen*,
+            <a href="https://zhihaoyang30.github.io/" target="_blank">Zhihao Yang</a>*,
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>,
+            <a href="https://xiangnan-wu.github.io/" target="_blank">Xiangnan Wu</a>,
+            Zirong Chen,
+            <a href="https://rainbowluocs.github.io/" target="_blank">Run Luo</a>,
+            Jinkun Hou,
+            Tao Tan,
+            Yinhe Zheng&dagger;,
+            <a href="https://yimingli-page.github.io/" target="_blank">Yiming Li</a>&dagger;
+        </i><br>
+        A controlled study of how gameplay data, world diversity, and model size scale continued pre-training and cross-world generalization for embodied game agents.
+        <div class="pub-meta-row">
+          <span class="pub-venue">arXiv preprint 2026</span>
+          <span class="pub-links">
+            <a href="https://gamescaling.github.io/assets/paper.pdf"><em>[paper]</em></a>
+            <a href="https://github.com/THUSI-Lab/GameScaling"><em>[code]</em></a>
+            <a href="https://gamescaling.github.io/"><em>[website]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card" data-topics="understanding" data-date="2026-10">
+  <div class="pub-category-dots" aria-label="Category: Understanding">
+    <span class="pub-category-dot pub-category-dot--understanding" aria-hidden="true"></span>
+  </div>
+  <div class="publication-card__layout">
+    <img src="https://videoarena-bench.github.io/assets/img/teaser1.jpg" alt="Video-Arena: perceiving events, interpreting updates, and tracking world states" width="200" height="120" style="margin-right: 20px; object-fit: contain; flex-shrink: 0;">
+    <div>
+        <strong>Video-Arena: A Scalable Agentic Video Benchmark for Spatiotemporal Capability</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://itheresaapocalypse.github.io/" target="_blank">Kuan Zhang</a>*,
+            Yukun Chen*,
+            <a href="https://zhihaoyang30.github.io/" target="_blank">Zhihao Yang</a>*,
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>,
+            <a href="https://xiangnan-wu.github.io/" target="_blank">Xiangnan Wu</a>,
+            Zirong Chen,
+            <a href="https://rainbowluocs.github.io/" target="_blank">Run Luo</a>,
+            Tao Tan,
+            Yinhe Zheng&dagger;,
+            <a href="https://yimingli-page.github.io/" target="_blank">Yiming Li</a>&dagger;
+        </i><br>
+        A scalable video benchmark for perceiving critical events, interpreting state updates, and tracking evolving world states under visual and agentic evaluation protocols.
+        <div class="pub-meta-row">
+          <span class="pub-venue">arXiv preprint 2026</span>
+          <span class="pub-links">
+            <a href="https://videoarena-bench.github.io/assets/paper.pdf"><em>[paper]</em></a>
+            <a href="https://github.com/THUSI-Lab/VideoArena"><em>[code]</em></a>
+            <a href="https://videoarena-bench.github.io/"><em>[website]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card" data-topics="generation action" data-date="2026-08-02">
+  <div class="pub-category-dots" aria-label="Categories: Generation, Action">
+    <span class="pub-category-dot pub-category-dot--generation" aria-hidden="true"></span>
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+  <div class="publication-card__layout">
+    <div class="pub-media-rotator" data-interval="4000">
+      <img class="pub-media-rotator__overview" src="https://sg-wam.github.io/sg-wam-overview.png" alt="SG-WAM framework overview" style="display: block;">
+      <img class="pub-media-rotator__teaser" src="https://sg-wam.github.io/intro.png" alt="SG-WAM teaser focusing on the complete Ours section" style="display: none;">
+    </div>
+    <div>
+        <strong>SG-WAM: Self-Guided World Modeling in Geometry-Aware Policy Space</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://scholar.google.com/citations?user=P0TNo5gAAAAJ&hl=3n" target="_blank">Ruiteng Zhao</a>,
+            <a href="https://scholar.google.com/citations?user=8nrJ1vsAAAAJ&hl=en" target="_blank">Zhengshen Zhang</a>,
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>,
+            <a href="https://scholar.google.com/citations?user=PFp3jbAAAAAJ&hl=en" target="_blank">Wenshuo Wang</a>,
+            <a href="https://scholar.google.com/citations?user=bMaupo8AAAAJ&hl=en" target="_blank">Jiahui Li</a>,
+            <a href="https://scholar.google.com/citations?user=RZBaKLsAAAAJ&hl=en" target="_blank">Zhiyuan Yang</a>,
+            <a href="https://scholar.google.com/citations?user=mfH9UFIAAAAJ&hl=en" target="_blank">Francis E. H. Tay</a>,
+            <a href="https://scholar.google.com/citations?user=dMogb2EAAAAJ&hl=en" target="_blank">Marcelo H. Ang Jr.</a>,
+            <a href="https://scholar.google.com/citations?user=uO_R9wQAAAAJ&hl=en" target="_blank">Haiyue Zhu</a>&dagger;
+        </i><br>
+        SG-WAM predicts action-conditioned future dynamics in a geometry-aware policy representation space for robust robot manipulation.
+        <br>
+        <div class="pub-meta-row">
+          <span class="pub-venue">arXiv 2026</span>
+          <span class="pub-links">
+            <a href="https://arxiv.org/abs/2608.01397"><em>[arXiv]</em></a>
+            <a href="https://github.com/ReturnZhao/SG-WAM"><em>[code]</em></a>
+            <a href="https://sg-wam.github.io/#paper-note"><em>[website]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card" data-topics="understanding" data-date="2026-07-24">
+  <div class="pub-category-dots" aria-label="Category: Understanding">
+    <span class="pub-category-dot pub-category-dot--understanding" aria-hidden="true"></span>
+  </div>
+  <div class="publication-card__layout">
+    <img src="https://enjundu.com/publication/507_cara/featured.jpg" alt="CARA framework overview" width="200" height="120" style="margin-right: 20px; object-fit: cover;">
+    <div>
+        <strong>CARA: Concept-Aware Risk Attention for Interpretable Collision Prediction</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://scholar.google.com/scholar?q=author%3A%22Zhishan+Tao%22" target="_blank">Zhishan Tao</a>,
+            <a href="" target="_blank">Ruoyu Wang</a>,
+            <a href="https://scholar.google.com/scholar?q=author%3A%22Yucheng+Wu%22" target="_blank">Yucheng Wu</a>,
+            <a href="https://enjundu.com/" target="_blank">Enjun Du</a>,
+            <a href="https://scholar.google.com/scholar?q=author%3A%22Yilei+Yuan%22" target="_blank">Yilei Yuan</a>,
+            <a href="https://scholar.google.com/scholar?q=author%3A%22Sherwin+Ho%22" target="_blank">Sherwin Ho</a>,
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>,
+            <a href="https://scholar.google.com/scholar?q=author%3A%22Jinbo+Su%22" target="_blank">Jinbo Su</a>,
+            <a href="https://www.cs.sjtu.edu.cn/en/jiaoshiml/hongyi.html" target="_blank">Yi Hong</a>&dagger;
+        </i><br>
+        An interpretable spatio-temporal framework that grounds collision prediction in evolving, human-understandable risk concepts.
+        <div class="pub-meta-row">
+          <span class="pub-venue">ACM MM 2026</span>
+          <span class="pub-badge pub-badge--oral">Oral</span>
+          <span class="pub-links">
+            <a href="https://arxiv.org/abs/2607.22494"><em>[arXiv]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card first-author" data-topics="action" data-date="2026-05-11">
+  <div class="pub-category-dots" aria-label="Category: Action">
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <img src="https://itheresaapocalypse.github.io/images/game-multiverse.png" alt="Game multiverse survey" width="200" height="100" style="margin-right: 20px; object-fit: cover;">
+    <div>
+        <strong>Towards Generalist Game Players: An Investigation of Foundation Models in the Game Multiverse</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://itheresaapocalypse.github.io/academicpages.github.io/" target="_blank">Kuan Zhang</a>*,
+            <a href="https://li-battery-dc.github.io/" target="_blank">Dongchen Liu</a>*,
+            <a href="" target="_blank">Qiyue Zhao</a>*,
+            <a href="" target="_blank">Tianyu Xin</a>*,
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>*,
+            <a href="" target="_blank">Haisheng Wang</a>,
+            <a href="" target="_blank">Han Yin</a>,
+            <a href="" target="_blank">Hongbo Ma</a>,
+            <a href="" target="_blank">Peize Li</a>,
+            ...,
+            <a href="https://yimingli-page.github.io/" target="_blank">Yiming Li</a>&dagger;
+        </i><br>
+        A survey of foundation models as generalist game players across datasets, models, harnesses, and benchmarks.
+        <br>
+        <div class="pub-meta-row">
+          <span class="pub-venue">arXiv 2026</span>
+          <span class="pub-links">
+            <a href="https://arxiv.org/abs/2605.09965"><em>[arXiv]</em></a>
+            <a href="https://github.com/THUSI-Lab/Awesome-LFMs-Play-Games"><em>[code]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card" data-topics="action" data-date="2026-01-07">
+  <div class="pub-category-dots" aria-label="Category: Action">
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <video width="200" height="120" style="margin-right: 20px; border-radius: 8px;" autoplay loop muted playsinline>
+      <source src="images/clap.mp4" type="video/mp4">
+    </video>
+    <div>
+        <strong>CLAP: Contrastive Latent Action Pretraining for Learning Vision-Language-Action Models from Human Videos</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://lin-shan.com/" target="_blank">Chubin Zhang</a>*,
+            <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en" target="_blank">Jianan Wang</a>*, 
+            <a href="" target="_blank">Zifeng Gao</a>, 
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>, 
+            <a href="" target="_blank">Tiranru Dai</a>,
+            <a href="https://homepage.zhouc.ai/" target="_blank">Cai Zhou</a>, <br>
+            <a href="https://ivg.au.tsinghua.edu.cn/Jiwen_Lu/" target="_blank">Jiwen Lu</a>,
+            <a href="https://andytang15.github.io/" target="_blank">Yansong Tang</a>&dagger;
+        </i><br>
+        Learning Vision-Language-Action Models from Human Videos.
+        <br>
+        <div class="pub-meta-row">
+          <span class="pub-venue">arXiv 2026</span>
+          <span class="pub-links">
+            <a href="https://mp.weixin.qq.com/s/6qkoPGMbnZXFWOYg-MljlQ"><em>[机器之心]</em></a>
+            <a href="https://arxiv.org/abs/2601.04061"><em>[arXiv]</em></a>
+            <a href="https://github.com/LinShan-Bin/OpenCLAP"><em>[code]</em></a>
+            <a href="https://lin-shan.com/CLAP/#"><em>[website]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card first-author" data-topics="action" data-date="2025-09-19">
+  <div class="pub-category-dots" aria-label="Category: Action">
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <video width="200" height="120" style="margin-right: 20px; border-radius: 8px;" autoplay loop muted playsinline>
+      <source src="images/dspv2.mp4" type="video/mp4">
+    </video>
+    <div>
+        <strong>DSPv2: Improved Dense Policy for Effective and Generalizable Whole-body Mobile Manipulation</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>, 
+            <a href="https://lin-shan.com/" target="_blank">Chubin Zhang</a>, 
+            <a href="https://ch3cook-fdu.github.io/" target="_blank">Sijin Chen</a>,
+            <a href="" target="_blank">Liufan Tan</a>, <br>
+            <a href="https://andytang15.github.io/" target="_blank">Yansong Tang</a>,
+            <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en" target="_blank">Jianan Wang</a>,
+            <a href="https://xh-liu.github.io/" target="_blank">Xihui Liu</a>&dagger;
+        </i><br>
+        Improved Dense Policy for Whole-body Mobile Manipulation, with effective perception, generalizable manipulation and coherent actions.
+        <div class="pub-meta-row">
+          <span class="pub-venue">ICRA 2026</span>
+          <span class="pub-links">
+            <a href="https://arxiv.org/abs/2509.16063"><em>[arXiv]</em></a>
+            <a href="https://github.com/Selen-Suyue/DSPv2"><em>[code]</em></a>
+            <a href="https://selen-suyue.github.io/DSPv2Net/"><em>[website]</em></a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card" data-topics="generation" data-date="2025-04-11">
+  <div class="pub-category-dots" aria-label="Category: Generation">
+    <span class="pub-category-dot pub-category-dot--generation" aria-hidden="true"></span>
+  </div>
+  <div class="publication-card__layout">
+    <img src="images/iraa.png" alt="Raa" width="200" height="100" style="margin-right: 20px;">
+    <div>
+        <strong>AdvDisplay: Adversarial Display Assembled by Thermoelectric Cooler for Fooling Thermal Infrared Detectors</strong><br>
+      <i style="font-size: 13px;">
+    <a href="https://scholar.google.com/citations?user=JkQmO-kAAAAJ&hl=en" target="_blank">Hao Li</a>&dagger;,
+    <a href="https://scholar.google.com/citations?user=eX7Ra5UAAAAJ&hl=en" target="_blank">Fanggao Wan</a>,
+    <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>,
+    <a href="https://ywuchina.github.io/" target="_blank">Yue Wu</a>,
+    <a href="https://scholar.google.com/citations?user=h4PExPwAAAAJ&hl=en" target="_blank">Mingyang Zhang</a>,
+    <a href="https://web.xidian.edu.cn/mggong/" target="_blank">Maoguo Gong</a>&dagger;
+    </i><br>
+      Historically, infrared adversarial attacks were single-use and tough to deploy. Using TEC, we implemented efficient attacks adaptable to hardware scenarios.
+      <div class="pub-meta-row">
+        <span class="pub-venue">AAAI 2025</span>
+        <span class="pub-links">
+          <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34011"><em>[paper]</em></a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card first-author" data-topics="action" data-date="2025-03-17">
+  <div class="pub-category-dots" aria-label="Category: Action">
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+ <div style="display: flex; align-items: center;">
+    <video width="200" height="120" style="margin-right: 20px; border-radius: 8px;" autoplay loop muted playsinline>
+      <source src="images/flower_dsp.mp4" type="video/mp4">
+    </video>
+    <div>
+        <strong>Dense Policy: Bidirectional Autoregressive Learning of Actions</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>*,
+            <a href="https://scholar.google.com/citations?user=WurpqEMAAAAJ&hl=en" target="_blank">Xinyu Zhan</a>*,
+            <a href="https://tonyfang.net/" target="_blank">Hongjie Fang</a>,
+            <a href="https://hanxue.me/" target="_blank">Han Xue</a>, <br>
+            <a href="https://fang-haoshu.github.io/" target="_blank">Haoshu Fang</a>,
+            <a href="https://dirtyharrylyl.github.io/" target="_blank">Yong-Lu Li</a>,
+            <a href="http://mvig.org" target="_blank">Cewu Lu</a>,
+            <a href="https://lixiny.github.io" target="_blank">Lixin Yang</a>&dagger;
+        </i><br>
+        Propose Dense Policy, A bidirectional robotic autoregressive policy, which infers trajectories by gradually expanding actions from sparse keyframes, demonstrated exceeding diffusion policies.
+        <div class="pub-meta-row">
+          <span class="pub-venue">ICCV 2025</span>
+          <span class="pub-links">
+            <a href="https://openaccess.thecvf.com/content/ICCV2025/html/Su_Dense_Policy_Bidirectional_Autoregressive_Learning_of_Actions_ICCV_2025_paper.html"><em>[paper]</em></a>
+            <a href="https://arxiv.org/abs/2503.13217"><em>[arXiv]</em></a>
+            <a href="https://selen-suyue.github.io/DspNet/"><em>[website]</em></a>
+            <a href="https://github.com/Selen-Suyue/DensePolicy"><em>[3D-code]</em></a>
+            <a href="https://github.com/Selen-Suyue/DensePolicy2D"><em>[2D-code]</em></a>
+          </span>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="publication-card first-author" data-topics="generation action" data-date="2024-11-14">
+  <div class="pub-category-dots" aria-label="Categories: Generation, Action">
+    <span class="pub-category-dot pub-category-dot--generation" aria-hidden="true"></span>
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+ <div style="display: flex; align-items: center;">
+    <img src="images/mba_animation.gif" alt="MBA" width="200" height="100" style="margin-right: 20px;">
+    <div>
+        <strong>Motion Before Action: Diffusing Object Motion as Manipulation Condition</strong><br>
+        <i style="font-size: 13px;">
+            <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>*, 
+            <a href="https://scholar.google.com/citations?user=WurpqEMAAAAJ&hl=en" target="_blank">Xinyu Zhan</a>*, 
+            <a href="https://tonyfang.net/" target="_blank">Hongjie Fang</a>, 
+            <a href="https://dirtyharrylyl.github.io/" target="_blank">Yong-Lu Li</a>, 
+            <a href="http://mvig.org" target="_blank">Cewu Lu</a>, 
+            <a href="https://lixiny.github.io" target="_blank">Lixin Yang</a>&dagger;
+        </i><br>
+        Propose MBA, a novel plug-and-play module leveraging cascaded diffusion processes to generate actions guided by object motion, enabling seamless integration with manipulation policies.
+        <div class="pub-meta-row">
+          <span class="pub-venue">RA-L 2025, ICRA 2026</span>
+          <span class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/11027642"><em>[paper]</em></a>
+            <a href="https://arxiv.org/abs/2411.09658"><em>[arXiv]</em></a>
+            <a href="https://selen-suyue.github.io/MBApage"><em>[website]</em></a>
+            <a href="https://github.com/Selen-Suyue/MBA"><em>[code]</em></a>
+          </span>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="publication-card first-author" data-topics="generation" data-date="2024-10-26">
+  <div class="pub-category-dots" aria-label="Category: Generation">
+    <span class="pub-category-dot pub-category-dot--generation" aria-hidden="true"></span>
+  </div>
+  <div class="publication-card__layout">
+    <img class="pub-media--dot-clearance" src="images/GAP.png" alt="RIaa" width="200" height="100" style="margin-right: 20px;">
+    <div>
+        <strong>Generative Adversarial Patches for Physical Attacks on Cross-Modal Pedestrian Re-Identification</strong><br>
+       <i style="font-size: 13px;">
+    <a href="https://selen-suyue.github.io" target="_blank"><span class="self-author">Yue Su</span></a>, 
+    <a href="https://scholar.google.com/citations?user=JkQmO-kAAAAJ&hl=en" target="_blank">Hao Li</a>&dagger;, 
+    <a href="https://web.xidian.edu.cn/mggong/" target="_blank">Maoguo Gong</a>&dagger;
+    </i><br>
+    A generative physical adversarial attack on VI-ReID models perturbs modality-invariant features. <br>
+    <div class="pub-meta-row">
+      <span class="pub-venue">arXiv 2024</span>
+      <span class="pub-links">
+        <a href="https://arxiv.org/abs/2410.20097"><em>[arXiv]</em></a>
+      </span>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card" data-topics="understanding" data-date="2026-09">
+  <div class="pub-category-dots" aria-label="Category: Understanding">
+    <span class="pub-category-dot pub-category-dot--understanding" aria-hidden="true"></span>
+  </div>
+ <div class="publication-card__layout">
+    <div class="aha-cover" id="aha-cover" role="group" aria-label="Aha Looped Transformer animation">
+      <div class="aha-cover__art">
+        <canvas id="la-orbit" role="img" aria-label="Particles loop through shared computation in a figure-eight pattern."></canvas>
+        <span class="aha-cover__caption">REPEAT. REFINE.</span>
+      </div>
+    </div>
+    <div>
+        <strong>Aha Looped Transformer</strong><br>
+An open visual atlas exploring looped Transformers, recurrent computation, adaptive depth, and latent reasoning. <br>
+      <div class="pub-meta-row">
+        <span class="pub-venue">Project 2026</span>
+        <span class="pub-links">
+      <a href="https://interactive-active-ai.github.io/Aha-Looped-Transformer/"><em>[website]</em></a>
+      <a href="https://github.com/Interactive-Active-AI"><em>[team]</em></a>
+      <a href="https://github.com/Interactive-Active-AI/Aha-Looped-Transformer"><em>[code]</em></a>
+        </span>
+      </div>
+    </div>
+ </div>
+</div>
+
+<div class="publication-card" data-topics="action" data-date="2025-11">
+  <div class="pub-category-dots" aria-label="Category: Action">
+    <span class="pub-category-dot pub-category-dot--action" aria-hidden="true"></span>
+  </div>
+ <div class="publication-card__layout">
+    <img src="images/maniunicon.png" alt="Maniunicon" width="200" height="100" style="margin-right: 20px;">
+    <div>
+        <strong>ManiUniCon: A Unified Control Interface for Robotic Manipulation</strong><br>
+ManiUniCon is a comprehensive, multi-process robotics control framework designed for robotic manipulation tasks. It provides a unified interface for controlling various robot arms, integrating sensors, and executing policies in real-time. <br>
+      <div class="pub-meta-row">
+        <span class="pub-venue">Project 2025</span>
+        <span class="pub-links">
+      <a href="https://github.com/Universal-Control"><em>[team]</em></a>
+      <a href="https://github.com/Universal-Control/ManiUniCon"><em>[code]</em></a>
+        </span>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+<nav class="works-pagination" id="works-pagination" aria-label="Works pagination" hidden></nav>
+
+<script src="assets/js/experience_layout.js?v=20260915a" defer></script>
+<script src="assets/js/show_publications.js?v=20261002a"></script>
+<script src="assets/js/pub_media_rotator.js"></script>
+
+<section class="novel-section" aria-labelledby="novel-section-title">
+<h2 id="novel-section-title">Novels</h2>
+<a class="novel-section__series" href="/biosite/post/kindred_prologue/">
+  <span class="novel-section__series-name">Kindred</span><span>· An AI simulated city</span>
+</a>
+<div class="kindred-slideshow" data-kindred-carousel data-autoplay="5000" aria-label="Kindred novel illustration carousel">
+  <div class="kindred-slideshow__viewport">
+    <div class="kindred-slideshow__track" data-kindred-track tabindex="0" role="region" aria-roledescription="carousel" aria-label="Kindred chapter illustrations. Swipe or use the arrow keys.">
+      <a class="kindred-slide" href="/biosite/post/kindred_1/" aria-label="Read Kindred Chapter 1: 欢迎来到 Kindred">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_1.png" alt="Illustration for Kindred Chapter 1" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 01</span><span class="kindred-slide__title">欢迎来到 Kindred</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_2/" aria-label="Read Kindred Chapter 2: 猎人">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_2.png" alt="Illustration for Kindred Chapter 2" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 02</span><span class="kindred-slide__title">猎人</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_3/" aria-label="Read Kindred Chapter 3: 旧书店">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_3.png" alt="Illustration for Kindred Chapter 3" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 03</span><span class="kindred-slide__title">旧书店</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_4/" aria-label="Read Kindred Chapter 4: 第一次误判">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_4.png" alt="Illustration for Kindred Chapter 4" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 04</span><span class="kindred-slide__title">第一次误判</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_5/" aria-label="Read Kindred Chapter 5: 百分之三十">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_5.png" alt="Illustration for Kindred Chapter 5" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 05</span><span class="kindred-slide__title">百分之三十</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_6/" aria-label="Read Kindred Chapter 6: 关系测试">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_6.png" alt="Illustration for Kindred Chapter 6" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 06</span><span class="kindred-slide__title">关系测试</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_7/" aria-label="Read Kindred Chapter 7: 百分之五十">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_7.png" alt="Illustration for Kindred Chapter 7" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 07</span><span class="kindred-slide__title">百分之五十</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_8/" aria-label="Read Kindred Chapter 8: 继承体">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_8.png" alt="Illustration for Kindred Chapter 8" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 08</span><span class="kindred-slide__title">继承体</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_9/" aria-label="Read Kindred Chapter 9: 判别器崩溃">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_9.png" alt="Illustration for Kindred Chapter 9" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 09</span><span class="kindred-slide__title">判别器崩溃</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_10/" aria-label="Read Kindred Chapter 10: 百分之九十">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_10.png" alt="Illustration for Kindred Chapter 10" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 10</span><span class="kindred-slide__title">百分之九十</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_11/" aria-label="Read Kindred Chapter 11: 公审">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_11.png" alt="Illustration for Kindred Chapter 11" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 11</span><span class="kindred-slide__title">公审</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_12/" aria-label="Read Kindred Chapter 12: 无法证明的人">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_12.png" alt="Illustration for Kindred Chapter 12" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Chapter 12</span><span class="kindred-slide__title">无法证明的人</span></span>
+      </a>
+      <a class="kindred-slide" href="/biosite/post/kindred_epilogue/" aria-label="Read Kindred Epilogue: 折角">
+        <img class="kindred-slide__image" src="/biosite/imgs/kindred_epilogue.png" alt="Illustration for the Kindred epilogue" loading="lazy" decoding="async">
+        <span class="kindred-slide__caption"><span class="kindred-slide__chapter">Epilogue</span><span class="kindred-slide__title">折角</span></span>
+      </a>
+    </div>
+    <button class="kindred-slideshow__control kindred-slideshow__control--previous" type="button" data-kindred-direction="-1" aria-label="Previous illustration">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m10 3.5-4.5 4.5 4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="kindred-slideshow__control kindred-slideshow__control--next" type="button" data-kindred-direction="1" aria-label="Next illustration">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="kindred-slideshow__pagination" data-kindred-pagination aria-label="Choose a Kindred chapter illustration"></div>
+</div>
+</section>
+<script src="assets/js/kindred_carousel.js?v=20260823d"></script>
+
+
+
+Blogs
+--------
+<script src="assets/js/aha_cover.js?v=20260916b" defer></script>
+<section class="profile-list-section profile-list-section--blogs" aria-label="Selected blog posts">
+  <div class="blog-grid" id="blog-track" tabindex="0" role="group" aria-label="Blog cards. Swipe or use the arrow keys.">
+    <a class="blog-card" href="https://selen-suyue.github.io/biosite/post/%E6%94%B6%E6%95%9B%E7%9A%84%E8%89%BA%E6%9C%AF/">
+      <img class="blog-card__cover" src="https://selen-suyue.github.io/biosite/imgs/convergence-art-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360">
+      <span class="blog-card__body">
+        <time class="profile-list__date" datetime="2026-09-15">Sep 2026</time>
+        <span class="profile-list__title" lang="zh-CN">收敛的艺术</span>
+        <span class="profile-list__meta">The Art of Convergence · Research</span>
+      </span>
+    </a>
+    <a class="blog-card" href="https://selen-suyue.github.io/biosite/post/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%B9%8B%E6%88%91%E8%A7%81/">
+      <img class="blog-card__cover" src="https://selen-suyue.github.io/biosite/imgs/WoG_poster.png" alt="" loading="lazy" decoding="async" width="640" height="360">
+      <span class="blog-card__body">
+        <time class="profile-list__date" datetime="2026-07-03">Jul 2026</time>
+        <span class="profile-list__title" lang="zh-CN">具身智能之我见</span>
+        <span class="profile-list__meta">My Perspective on Embodied Intelligence · Robotics</span>
+      </span>
+    </a>
+    <a class="blog-card" href="https://selen-suyue.github.io/biosite/post/test/">
+      <img class="blog-card__cover" src="https://selen-suyue.github.io/biosite/images/covers/cai.jpg" alt="" loading="lazy" decoding="async" width="640" height="360">
+      <span class="blog-card__body">
+        <time class="profile-list__date" datetime="2025-11-13">Nov 2025</time>
+        <span class="profile-list__title" lang="zh-CN">理解与生成</span>
+        <span class="profile-list__meta">Understanding and Generation · Multimodality</span>
+      </span>
+    </a>
+  </div>
+  <div class="blog-controls" hidden>
+    <button type="button" data-blog-step="-1" aria-controls="blog-track" aria-label="Previous blog">←</button>
+    <button type="button" data-blog-step="1" aria-controls="blog-track" aria-label="Next blog">→</button>
+  </div>
+</section>
+<script src="assets/js/blog_carousel.js?v=20260916a" defer></script>
+
+Awards
+--------
+<section class="profile-list-section profile-list-section--awards" aria-label="Awards">
+  <ul class="profile-list">
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2025">Nov 2025</time>
+      <span class="profile-list__content">
+        <span class="profile-list__title">Xiaomi Outstanding Scholarship</span>
+        <span class="profile-list__meta">Scholarship</span>
+      </span>
+    </li>
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2025">Oct 2025</time>
+      <span class="profile-list__content">
+        <span class="profile-list__title">National Scholarship</span>
+        <span class="profile-list__meta">Scholarship</span>
+      </span>
+    </li>
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2025">Oct 2025</time>
+      <span class="profile-list__content">
+        <span class="profile-list__title">Outstanding Student</span>
+        <span class="profile-list__meta">Xidian University</span>
+      </span>
+    </li>
+  </ul>
+</section>
+
+Talks
+--------
+<section class="profile-list-section profile-list-section--talks" aria-label="Invited talks">
+  <ul class="profile-list">
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2026-03">Mar 2026</time>
+      <span class="profile-list__content">
+        <a class="profile-list__title" href="http://xhslink.com/o/74L1xM2Vw2f">RoboTion</a>
+        <span class="profile-list__meta">Invited talk · World Guidance (WoG)</span>
+      </span>
+    </li>
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2025-12">Dec 2025</time>
+      <span class="profile-list__content">
+        <a class="profile-list__title" href="https://www.bilibili.com/video/BV1utBrBfED4?spm_id_from=333.788.videopod.episodes&amp;p=9">NICE Seminar</a>
+        <span class="profile-list__meta">Invited talk · Imitation Learning</span>
+      </span>
+    </li>
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2025-12">Dec 2025</time>
+      <span class="profile-list__content">
+        <a class="profile-list__title" href="https://b23.tv/We6FLQh">RL China</a>
+        <span class="profile-list__meta">Invited talk · DSPv2</span>
+      </span>
+    </li>
+    <li class="profile-list__item">
+      <time class="profile-list__date" datetime="2025-10">Oct 2025</time>
+      <span class="profile-list__content">
+        <a class="profile-list__title" href="https://b23.tv/PvLKNR1">3D视觉工坊</a>
+        <span class="profile-list__meta">Invited talk · DSP &amp; DSPv2</span>
+      </span>
+    </li>
+  </ul>
+</section>

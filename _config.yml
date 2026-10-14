@@ -3,57 +3,57 @@
 # This config file is meant for settings that affect your entire site, values
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve -l -H localhost`. If you change this file, please restart the
+# `jekyll serve -l -H localhost`. If you change this file, please restart the 
 # server process.
 
 # Basic Site Settings
-locale                   : "zh-CN"
-title                    : "陈昊璟 / Haojing Chen"
+locale                   : "en-US"
+title                    : "Selen Su / Homepage"
 title_separator          : "-"
-name                     : "Haojing Chen 陈昊璟"
-description              : "计算机视觉、视频生成、扩散模型与多模态推理"
-url                      : "https://haojingchen.github.io"
+name                     : Selen
+description              : &description "personal description"
+url                      : https://selen-suyue.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "HaojingChen/HaojingChen.github.io"
+repository               : "Selen-Suyue/Selen"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "haojing-avatar.jpg"
-  name             : "Haojing Chen 陈昊璟"
-  pronouns         :
-  bio              : "计算机视觉、视频生成、扩散模型与多模态推理"
-  location         :
-  employer         : "电子科技大学"
-  uri              : "https://haojingchen.github.io"
-  email            : "ch3n.512@gmail.com"
+  avatar           : "selen.png"
+  name             : "Yue Su 苏悦"
+  pronouns         : "He/Him"  
+  bio              : "得大自在"
+  location         : 
+  employer         : 
+  uri              : 
+  email            : "selenyuesu@gmail.com" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    :
+  googlescholar    : https://scholar.google.com/citations?view_op=list_works&hl=en&user=TUVYCcIAAAAJ
   impactstory      : # URL
-  orcid            :
+  orcid            : 
   semantic         : # URL
-  pubmed           :
+  pubmed           : 
   researchgate     : # URL
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "HaojingChen"
-  kaggle           : # Username
-  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")
+  github           : "Selen-Suyue"
+  kaggle           : # Username  
+  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  linkedin         :
-  bilibili         :
-  twitter          :
-  youtube          :
-  XiaoHongShu      :
-  instagram        :
+  linkedin         : selen-su-008867334
+  bilibili         : https://space.bilibili.com/160180005?spm_id_from=333.1007.0.0
+  twitter          : Selen7005717917
+  youtube          : https://www.youtube.com/@SelenSu-j6h
+  XiaoHongShu      : https://www.xiaohongshu.com/user/profile/62d3ed3c0000000002000fed
+  instagram        : selensuyue
 
 
 # Site Settings
